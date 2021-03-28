@@ -7,11 +7,15 @@
     "lib": "lib"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha --reporter xunit --reporter-option output=bang.xml"
   },
   "author": "Elliot Nelson",
   "license": "MIT",
   "devDependencies": {
-    "jasmine": "^3.7.0"
+    "chai": "^4.3.4",
+    "chai-as-promised": "^7.1.1",
+    "jasmine": "^3.7.0",
+    "mocha": "^8.3.2",
+    "sinon": "^10.0.0"
   }
 }
