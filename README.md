@@ -1,6 +1,6 @@
 # aseprite-cli
 
-> A simple wrapper for the Aseprite CLI.
+> A simple wrapper for the [Aseprite](https://www.aseprite.org/) CLI.
 
 ### Install
 
