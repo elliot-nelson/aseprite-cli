@@ -1,21 +1,21 @@
 {
   "name": "aseprite-cli",
   "version": "0.1.0",
-  "description": "Simple wrapper for using the Aseprite CLI",
+  "description": "Simple wrapper for the Aseprite CLI",
   "main": "index.js",
-  "directories": {
-    "lib": "lib"
-  },
+  "files": [
+    "index.js",
+    "lib/**/*.js"
+  ],
   "scripts": {
-    "test": "mocha --reporter xunit --reporter-option output=bang.xml",
-    "coverage": "mocha --reporter xunit --reporter-option output=bang.xml"
+    "test": "mocha",
+    "coverage": "mocha"
   },
   "author": "Elliot Nelson",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
-    "jasmine": "^3.7.0",
     "mocha": "^8.3.2",
     "sinon": "^10.0.0"
   }
