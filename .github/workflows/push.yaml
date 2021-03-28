@@ -14,13 +14,11 @@ jobs:
     - name: Version Check
       id: version-check
       run: |
+        set +e
         PackageName=$(jq -r .name < package.json)
-        echo $PackageName
         NewPackageVersion=$(jq -r .version < package.json)
-        echo $NewPackageVersion
         npm show $PackageName versions | grep -q "'${NewPackageVersion}'"
         VersionAlreadyPublished=$?
-        echo $VersionAlreadyPublished
         if [ $VersionAlreadyPublished -eq 1 ]; then
           echo "::set-output name=PUBLISH::true"
         else
