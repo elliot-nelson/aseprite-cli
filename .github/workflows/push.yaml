@@ -6,9 +6,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
     - name: Setup nodejs
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       with:
         node-version: 12
     - name: Build
@@ -24,7 +24,5 @@ jobs:
     - name: Tag
       if: steps.publish.outputs.type != 'none'
       run: |
-        git config --local user.email nelson.work@gmail.com
-        git config --local user.name 'Elliot Nelson'
         git tag v${{ steps.publish.outputs.version }}
         git push --tags
