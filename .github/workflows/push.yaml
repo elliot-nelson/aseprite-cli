@@ -1,0 +1,27 @@
+on: push
+name: CI
+jobs:
+  build:
+    name: Build & Publish
+    runs-on: ubuntu-latest
+    #env:
+    #  NPM_CONFIG_USERCONFIG: .npmrc
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - name: Build
+      run: npm install
+    - name: Test
+      run: npm run coverage
+    - name: Publish
+      if: github.ref == 'refs/heads/main'
+      run: |
+        PackageName=$(jq -r .name < package.json)
+        NewPackageVersion=$(jq -r .version < package.json)
+        npm show $PackageName versions | grep -q "'${NewPackageVersion}'"
+        VersionAlreadyPublished=$?
+        if [ $VersionAlreadyPublished -eq 1 ]; then
+          npm publish
+        fi
+      env:
+        NPM_CUSTOM_NPMRC: ${{secrets.NPMRC}}
