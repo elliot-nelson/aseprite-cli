@@ -4,8 +4,6 @@ jobs:
   build:
     name: Build & Publish
     runs-on: ubuntu-latest
-    #env:
-    #  NPM_CONFIG_USERCONFIG: .npmrc
     steps:
     - name: Checkout
       uses: actions/checkout@master
@@ -22,6 +20,8 @@ jobs:
         VersionAlreadyPublished=$?
         if [ $VersionAlreadyPublished -eq 1 ]; then
           npm publish
+        else
+          echo "Publishing skipped."
         fi
       env:
         NPM_CUSTOM_NPMRC: ${{secrets.NPMRC}}
