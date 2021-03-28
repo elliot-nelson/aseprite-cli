@@ -24,5 +24,7 @@ jobs:
     - name: Tag
       if: steps.publish.outputs.type != 'none'
       run: |
+        git config --local user.email nelson.work@gmail.com
+        git config --local user.name 'Elliot Nelson'
         git tag v${{ steps.publish.outputs.version }}
         git push --tags
