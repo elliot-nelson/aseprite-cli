@@ -80,6 +80,33 @@ console.log(Aseprite.execSync('--version').stdout);
 
 Pull requests welcome.
 
+To run tests locally:
+
+```console
+npm install
+npm test
+```
+
+To try out changes on your own system, open your node console and try running a command:
+
+```console
+$ node
+> require('.').execSync('--version')
+{
+  status: 0,
+  signal: null,
+  output: [
+    null,
+    <Buffer 41 73 65 70 72 69 74 65 20 31 2e 32 2e 31 38 0a>,
+    <Buffer >
+  ],
+  pid: 29332,
+  stdout: 'Aseprite 1.2.18\n',
+  stderr: ''
+}
+>
+```
+
 ### Disclaimer
 
 This project is not affiliated with or endorsed by the Aseprite team. It uses whatever Aseprite binary
