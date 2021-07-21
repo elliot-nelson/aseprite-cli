@@ -1,6 +1,6 @@
 {
   "name": "aseprite-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple wrapper for the Aseprite CLI",
   "main": "index.js",
   "files": [
@@ -13,6 +13,11 @@
   },
   "author": "Elliot Nelson",
   "license": "MIT",
+  "keywords": [
+    "aseprite",
+    "cli",
+    "utility"
+  ],
   "devDependencies": {
     "chai": "^4.3.4",
     "chai-as-promised": "^7.1.1",
