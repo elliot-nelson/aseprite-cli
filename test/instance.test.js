@@ -56,4 +56,42 @@ describe('Instance', () => {
             });
         });
     });
+
+    describe('flattenArgs', () => {
+        it('given a file path and args object, returns array', () => {
+            expect(subject.flattenArgs(['in.aseprite', { crabs: 3 }])).to.deep.equal(
+                ['--batch', 'in.aseprite', '--crabs="3"']
+            );
+        });
+
+        it('given a file path and args array, returns array', () => {
+            expect(subject.flattenArgs(['in.aseprite', ['--crabs', 3]])).to.deep.equal(
+                ['--batch', 'in.aseprite', '--crabs', 3]
+            );
+        });
+
+        it('given a file path and args string, returns string', () => {
+            expect(subject.flattenArgs(['in.aseprite', '--crabs 3'])).to.deep.equal(
+                '--batch in.aseprite --crabs 3'
+            );
+        });
+
+        it('given just an args array, returns array', () => {
+            expect(subject.flattenArgs([['in.aseprite', '--crabs', 3]])).to.deep.equal(
+                ['--batch', 'in.aseprite', '--crabs', 3]
+            );
+        });
+
+        it('given just an args object, returns array', () => {
+            expect(subject.flattenArgs([{ crabs: 3 }])).to.deep.equal(
+                ['--batch', '--crabs="3"']
+            );
+        });
+
+        it('given just an args string, returns string', () => {
+            expect(subject.flattenArgs(['in.aseprite --crabs 3'])).to.deep.equal(
+                '--batch in.aseprite --crabs 3'
+            );
+        });
+    });
 });

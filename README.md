@@ -31,12 +31,11 @@ in the command line yourself.
 ```js
 const Aseprite = require('aseprite-cli');
 
-await Aseprite.exec(
-    '*.aseprite',
+await Aseprite.exec('*.aseprite', [
     '--sheet-type', 'packed',
     '--sheet', 'out.png',
     '--data', 'out.json'
-);
+]);
 // => Aseprite --batch *.aseprite --sheet-type packed --sheet out.png --data out.json
 ```
 
