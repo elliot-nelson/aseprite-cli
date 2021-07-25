@@ -60,7 +60,7 @@ describe('Instance', () => {
     describe('flattenArgs', () => {
         it('given a file path and args object, returns array', () => {
             expect(subject.flattenArgs(['in.aseprite', { crabs: 3 }])).to.deep.equal(
-                ['--batch', 'in.aseprite', '--crabs="3"']
+                ['--batch', 'in.aseprite', '--crabs=3']
             );
         });
 
@@ -84,7 +84,7 @@ describe('Instance', () => {
 
         it('given just an args object, returns array', () => {
             expect(subject.flattenArgs([{ crabs: 3 }])).to.deep.equal(
-                ['--batch', '--crabs="3"']
+                ['--batch', '--crabs=3']
             );
         });
 
