@@ -75,6 +75,33 @@ const Aseprite = require('aseprite-cli').at('/usr/local/aseprite');
 console.log(Aseprite.execSync('--version').stdout);
 ```
 
+### Issues/Troubleshooting
+
+If you're having trouble getting the API to do what you want, try reverting to a manually-crafted string
+and see if it works as expected.
+
+Keep in mind that many Aseprite CLI operations are order-dependent, for example:
+
+```console
+# WRONG - out.png will contain ALL frames
+Aseprite --batch in.aseprite --frame-range 6,9 --sheet out.png
+
+# RIGHT - frame-range must come before the source file
+Aseprite --batch --frame-range 6,9 in.aseprite --sheet out.png
+```
+
+There is no way to specify the "right" order of arguments using object notation, so in this case, you
+should pass either a crafted string or an array of arguments, for example:
+
+```js
+// No need to include '--batch', it is always included by default.
+await AsepriteCli.exec([
+  '--frame-range', '6,9',
+  'in.aseprite',
+  '--sheet', 'out.png'
+]);
+```
+
 ### Development
 
 Pull requests welcome.
